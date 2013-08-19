@@ -1,0 +1,11 @@
+/*
+---
+name: JSON like options in HTML5 data-*
+description: Parsing options written by malformed JSON in HTML5 data-* attributes.
+authors:
+  - tokkonopapa
+resources:
+...
+*/
+
+<p>Demo of jQuery parseData() on jsfiddle</p>

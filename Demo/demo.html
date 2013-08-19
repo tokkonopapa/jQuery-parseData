@@ -1,0 +1,47 @@
+<p id="sample">
+    <!-- デフォルトを適用 -->
+    <span class="tooltip">What</span> is 
+
+    <!-- 1つ1つ指定 -->
+    <span class="tooltip"
+        data-color="#000"
+        data-background="#b4f93d"
+        data-text="始めなかった"
+    >not started</span>
+
+    <!-- JSON 形式で指定 -->
+    <span class="tooltip"
+        data-tooltip='{
+            "color" : "#fff",
+            "background" : "#f1354b",
+            "text" : "今日"
+        }'
+    >today</span> is 
+
+    <!-- JavaScript オブジェクト形式で指定 -->
+    <span class="tooltip"
+        data-tooltip="{
+            color : '#fff',
+            background : '#429284',
+            text : '決して'
+        }"
+    >never</span>
+
+    <!-- クォートを付けずに指定 -->
+    <span class="tooltip"
+        data-tooltip="{
+            color : #fff,
+            background : #b20d7a,
+            text : 終わる
+        }"
+    >finished</span>
+
+    <!-- {} で囲まずに指定 -->
+    <span class="tooltip"
+        data-tooltip="
+            color : #111,
+            background : #c2e2fa,
+            text : 明日
+        "
+    >tomorrow</span>.
+</p>

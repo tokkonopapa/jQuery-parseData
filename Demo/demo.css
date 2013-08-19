@@ -1,0 +1,29 @@
+#sample {
+    position:relative;
+}
+.tooltip {
+    cursor: pointer;
+    border-bottom: 1px #aaa dashed;
+    margin: 0 0.1em;
+}
+.tip {
+    top: 110%;
+    left: 0;
+    z-index: 9999;
+    position: absolute;
+    padding: 0.5em 1.0em;
+    color: #fff;
+    background: #000;
+    border-radius: 0.4em;
+}
+.tip-after {
+    top: -100%;
+    left: 20%;
+    width: 0;
+    height: 1.6em;
+    content:"";
+    position: absolute;
+    display: block;
+    border: 0.5em solid transparent;
+    border-bottom-color: #000;
+}
