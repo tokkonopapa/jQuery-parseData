@@ -1,0 +1,37 @@
+{
+    "name": "parseData",
+    "title": "jQuery parseData",
+    "description": "A simle parser to get the option objects from HTML5 data-* attribute without using eval().",
+    "keywords": [
+        "HTML5",
+        "data",
+        "attribute",
+        "plugin",
+        "options",
+        "json"
+    ],
+    "version": "0.1.0",
+    "author": {
+        "name": "tokkonopapa",
+        "url": "https://github.com/tokkonopapa"
+    },
+    "maintainers": [
+        {
+            "name": "tokkonopapa",
+            "email": "tokkonopapa@yahoo.com",
+            "url": "https://github.com/tokkonopapa"
+        }
+    ],
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://github.com/tokkonopapa/jQuery-parseData/blob/master/LICENSE"
+        }
+    ],
+    "bugs": "https://github.com/tokkonopapa/jQuery-parseData/issues",
+    "homepage": "https://github.com/tokkonopapa/jQuery-parseData",
+    "docs": "https://github.com/tokkonopapa/jQuery-parseData/blob/master/README.md",
+    "dependencies": {
+        "jquery": ">=1.6"
+    }
+}
