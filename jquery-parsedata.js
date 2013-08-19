@@ -1,37 +1,44 @@
+/*
+* $.parseData v0.1
+* Copyright 2013, tokkonopapa
+* https://github.com/tokkonopapa/jQuery-parseData/
+*
+* This content is released under the MIT License
+*/
 
 ;(function ($, undefined) {
 
-	// 正規表現は予めコンパイルしておく
-	var _jsonize_brace = /^[{\[]/,         // 先頭が `{`、`[` で始まるか調べる
-	    _jsonize_token = /[^,:{}\[\]]+/g,  // 区切り文字を元にトークンを切り出す
-	    _jsonize_quote = /^['"](.*)['"]$/, // 先頭・末尾の `'`、`"` を削除する
-	    _jsonize_escap = /"/g;             // `"` をエスケープする
+	// Pre-compiled regular expression
+	var _jsonize_brace = /^[{\[]/,         // check `{`、`[` at the beginning
+	    _jsonize_token = /[^,:{}\[\]]+/g,  // retrieve token based on the delimiter
+	    _jsonize_quote = /^['"](.*)['"]$/, // remove quotes at the top end
+	    _jsonize_escap = /"/g;             // escape double quote
 
-	// JSON ライクな文字列を正規の JSON に変換する。
-	// ただし、入力が数値／文字列リテラルの場合は正しく変換されない。
-	// また入力が undefined の場合、空の JSON を表す `{}` を返す。
+	// Convert JSON like literals to valid JSON
+	// Numeric or String literal will be converted to strings.
+	// The `undefined` will be converted to `{}`.
 	function _jsonize(str) {
-		// 非オブジェクトリテラルなら {...} で囲う
+		// Wrap with `{}` if not JavaScript object literal
 		str = $.trim(str);
 		if (_jsonize_brace.test(str) === false) {
 			str = '{' + str + '}';
 		}
 
-		// トークンを抽出し、JSON に変換する
+		// Retrieve token and convert to JSON
 		return str.replace(_jsonize_token, function (a) {
 			a = $.trim(a);
 
-			// 特別な値や数値はそのまま
+			// Keep some special strings as they are
 			if ('' === a ||
 				'true' === a || 'false' === a || 'null' === a ||
 				(!isNaN(parseFloat(a)) && isFinite(a))) {
 				return a;
 			}
 
-			// 文字列リテラルには以下の処理を施す
-			// 1. 先頭・末尾のクォーテーションを削除
-			// 2. 中間のダブルクォーテーションをエスケープ
-			// 3. 全体をダブルクォーテーションで囲む
+			// For string literal,
+			// 1. remove quotes at the top end
+			// 2. escape double quotes in the middle
+			// 3. wrap token with double quotes
 			else {
 				return '"'
 					+ a.replace(_jsonize_quote, '$1')
@@ -46,15 +53,15 @@
 			var objects = [];
 
 			this.each(function () {
-				// データ属性を取得
+				// Get string in the data-* attribute
 				var data = this.getAttribute('data-' + key),
 				    obj = {};
 
 				try {
-					// JavaScript オブジェクトに変換する
+					// Convert to JavaScript object
 					obj = $.parseJSON(_jsonize(data));
 				} catch (e) {
-					// 変換に失敗した場合、`{key: data}` を作成する
+					// Create `{key: data}` in case of fail
 					obj[key] = data;
 				}
 
