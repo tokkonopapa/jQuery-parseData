@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<link href="demo.css" rel="stylesheet" media="all">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="../jquery-parsedata.js"></script>
+<script src="demo.js"></script>
+</head>
+<body>
+<p id="sample">
+    <!-- use default options -->
+    <span class="tooltip">What</span> is not 
+
+    <!-- options 1 by 1 -->
+    <span class="tooltip"
+        data-color="#000"
+        data-background="#b4f93d"
+        data-text="to begin doing or using something"
+    >started</span>
+
+    <!-- options by JSON -->
+    <span class="tooltip"
+        data-tooltip='{
+            "color" : "#fff",
+            "background" : "#f1354b",
+            "text" : "on this day"
+        }'
+    >today</span> is 
+
+    <!-- options by JavaScript object literals -->
+    <span class="tooltip"
+        data-tooltip="{
+            color : '#fff',
+            background : '#429284',
+            text : 'not at any time'
+        }"
+    >never</span>
+
+    <!-- options without quotes -->
+    <span class="tooltip"
+        data-tooltip="{
+            color : #fff,
+            background : #b20d7a,
+            text : no longer doing something
+        }"
+    >finished</span>
+
+    <!-- options without curly braces -->
+    <span class="tooltip"
+        data-tooltip="
+            color : #111,
+            background : #c2e2fa,
+            text : on or during the day after today
+        "
+    >tomorrow</span>.
+</p>
+</body>
+</html>
