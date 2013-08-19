@@ -1,47 +1,47 @@
 <p id="sample">
-    <!-- デフォルトを適用 -->
-    <span class="tooltip">What</span> is 
+    <!-- use default options -->
+    <span class="tooltip">What</span> is not 
 
-    <!-- 1つ1つ指定 -->
+    <!-- options 1 by 1 -->
     <span class="tooltip"
         data-color="#000"
         data-background="#b4f93d"
-        data-text="始めなかった"
-    >not started</span>
+        data-text="to begin doing or using something"
+    >started</span>
 
-    <!-- JSON 形式で指定 -->
+    <!-- options by JSON -->
     <span class="tooltip"
         data-tooltip='{
             "color" : "#fff",
             "background" : "#f1354b",
-            "text" : "今日"
+            "text" : "on this day"
         }'
     >today</span> is 
 
-    <!-- JavaScript オブジェクト形式で指定 -->
+    <!-- options by JavaScript object literals -->
     <span class="tooltip"
         data-tooltip="{
             color : '#fff',
             background : '#429284',
-            text : '決して'
+            text : 'not at any time'
         }"
     >never</span>
 
-    <!-- クォートを付けずに指定 -->
+    <!-- options without quotes -->
     <span class="tooltip"
         data-tooltip="{
             color : #fff,
             background : #b20d7a,
-            text : 終わる
+            text : no longer doing something
         }"
     >finished</span>
 
-    <!-- {} で囲まずに指定 -->
+    <!-- options without curly braces -->
     <span class="tooltip"
         data-tooltip="
             color : #111,
             background : #c2e2fa,
-            text : 明日
+            text : on or during the day after today
         "
     >tomorrow</span>.
 </p>

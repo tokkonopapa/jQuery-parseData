@@ -5,6 +5,7 @@ description: Parsing options written by malformed JSON in HTML5 data-* attribute
 authors:
   - tokkonopapa
 resources:
+
 ...
 */
 
