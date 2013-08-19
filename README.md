@@ -1,8 +1,8 @@
 jQuery-parseData
 ================
 
-A simle parser to get the option object for jQuery plugin from HTML5 data-* 
-attribute without `eval()`.
+A simle parser to get the option objects from HTML5 data-* attribute without 
+using `eval()`.
 
 ### Description:
 
