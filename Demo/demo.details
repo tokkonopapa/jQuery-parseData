@@ -1,12 +1,11 @@
-/*
 ---
 name: JSON like options in HTML5 data-*
-description: Parsing options written by malformed JSON in HTML5 data-* attributes.
+description: Parsing options written by malformed JSON in HTML5 data-* attributes
 authors:
   - tokkonopapa
 resources:
-  - https://getfirebug.com/firebug-lite-debug.js
+  - https://raw.github.com/tokkonopapa/jQuery-parseData/master/jquery-parsedata.js
+normalize_css: no
 ...
-*/
 
-<p>Demo of jQuery parseData() on jsfiddle</p>
+Demo for jQuery parseData() on jsfiddle

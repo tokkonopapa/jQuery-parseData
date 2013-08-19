@@ -1,72 +1,72 @@
 
-;(function ($, undefined) {
+;(function ($, window, document, undefined) {
 
-	// 正規表現は予めコンパイルしておく
-	var _jsonize_brace = /^[{\[]/,         // 先頭が `{`、`[` で始まるか調べる
-	    _jsonize_token = /[^,:{}\[\]]+/g,  // 区切り文字を元にトークンを切り出す
-	    _jsonize_quote = /^['"](.*)['"]$/, // 先頭・末尾の `'`、`"` を削除する
-	    _jsonize_escap = /"/g;             // `"` をエスケープする
+    // プラグインの定義
+    $.fn.MyPlugin = function (options) {
 
-	// JSON ライクな文字列を正規の JSON に変換する。
-	// ただし、入力が数値／文字列リテラルの場合は正しく変換されない。
-	// また入力が undefined の場合、空の JSON を表す `{}` を返す。
-	function _jsonize(str) {
-		// 非オブジェクトリテラルなら {...} で囲う
-		str = $.trim(str);
-		if (_jsonize_brace.test(str) === false) {
-			str = '{' + str + '}';
-		}
+        // 要素の繰り返しの前に起動時のオプションを構築する
+        options = $.extend({}, $.fn.MyPlugin.defaults, options);
 
-		// トークンを抽出し、JSON に変換する
-		return str.replace(_jsonize_token, function (a) {
-			a = $.trim(a);
+        // マッチした要素それぞれにオプションを設定する
+        return this.each(function () {
+            var opts, settings = {}, $this = $(this);
 
-			// 特別な値や数値はそのまま
-			if ('' === a ||
-				'true' === a || 'false' === a || 'null' === a ||
-				(!isNaN(parseFloat(a)) && isFinite(a))) {
-				return a;
-			}
+            opts = $this.parseData("color");
+            settings = $.extend({}, options, settings, opts);
 
-			// 文字列リテラルには以下の処理を施す
-			// 1. 先頭・末尾のクォーテーションを削除
-			// 2. 中間のダブルクォーテーションをエスケープ
-			// 3. 全体をダブルクォーテーションで囲む
-			else {
-				return '"'
-					+ a.replace(_jsonize_quote, '$1')
-					   .replace(_jsonize_escap, '\\"')
-					+ '"';
-			}
-		});
-	}
+            opts = $this.parseData("background");
+            settings = $.extend({}, options, settings, opts);
 
-	$.fn.extend({
-		parseData: function(key) {
-			var objects = [];
+            opts = $this.parseData("text");
+            settings = $.extend({}, options, settings, opts);
 
-			this.each(function () {
-				// データ属性を取得
-				var data = this.getAttribute('data-' + key),
-				    obj = {};
+            opts = $this.parseData("tooltip");
+            settings = $.extend({}, options, settings, opts);
 
-				try {
-					// JavaScript オブジェクトに変換する
-					obj = $.parseJSON(_jsonize(data));
-				} catch (e) {
-					// 変換に失敗した場合、`{key: data}` を作成する
-					obj[key] = data;
-				}
+            // プラグインのメイン処理
+            myPrivateFunc($this, settings);
+        });
+    };
 
-				objects.push(obj);
-			});
+    // ツールチップ表示
+    function myPrivateFunc($elm, settings) {
+        $elm.on({
+            mouseenter: function () {
+                var offset = $elm.offset(),
+                    x = Math.floor(offset.left),
+                    y = Math.floor(offset.top),
+                    tip = $('<span class="tip">' +
+                            settings.text +
+                            '<span class="tip-after"' +
+                            'style="border-bottom-color:' +
+                            settings.background +
+                            '"</span></span>');
 
-			if (objects.length === 1) {
-				return objects[0];
-			} else {
-				return objects;
-			}
-		}
-	});
+                $elm.append(tip.css({
+                    'color': settings.color,
+                    'background-color': settings.background,
+                    'top': y + 16,
+                    'left': x
+                }));
+            },
+            mouseleave: function () {
+                $elm.find(".tip").remove();
+            }
+        });
+    }
 
-})(jQuery);
+    // オプションのデフォルト値
+    $.fn.MyPlugin.defaults = {
+        color: "black",
+        background: "white",
+        text: "?"
+    };
+
+})(jQuery, window, document);
+
+$(function () {
+    // オプションを指定して起動する
+    var obj = $(".tooltip").MyPlugin({
+        background: "yellow"
+    });
+});
