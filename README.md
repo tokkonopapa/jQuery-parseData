@@ -24,15 +24,15 @@ if ( rvalidchars.test( data.replace( rvalidescape, "@" )
 }
 ```
 
-It means this plugin has a safety equivalent to the logic of Douglas Crockford.
+It means this plugin has a safety equivalent to the Douglas Crockford's json2.
 
 ### Usage:
 
 Your markup like bellow:
 
 ```html
-<div data-my-plugin='{ "propertyFoo": "foo", "propertyBar": "bar" }'></div>
-<div data-my-plugin="{ propertyFoo: 'foo', propertyBar: 'bar' }"></div>
+<div data-my-plugin='{"propertyFoo": "foo", "propertyBar": "bar"}'></div>
+<div data-my-plugin="{propertyFoo: 'foo', propertyBar: 'bar'}"></div>
 <div data-my-plugin="propertyFoo: foo, propertyBar: bar"></div>
 ```
 
