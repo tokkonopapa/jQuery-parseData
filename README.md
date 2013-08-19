@@ -5,7 +5,7 @@ A simle parser to get the option object for jQuery plugin from HTML5 data-* attr
 
 ### Usage:
 
-Your markup like those:
+Your markup like bellow:
 
 ```html
 <div data-my-plugin='{ "propertyFoo": "foo", "propertyBar": "bar" }'></div>
@@ -13,7 +13,7 @@ Your markup like those:
 <div data-my-plugin="propertyFoo: foo, propertyBar: bar"></div>
 ```
 
-will get the options object:
+will be transfered into the options object:
 
 ```javascript
 {
