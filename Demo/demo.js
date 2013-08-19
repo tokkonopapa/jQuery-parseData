@@ -1,13 +1,10 @@
 
 ;(function ($, window, document, undefined) {
 
-    // プラグインの定義
     $.fn.MyPlugin = function (options) {
 
-        // 要素の繰り返しの前に起動時のオプションを構築する
         options = $.extend({}, $.fn.MyPlugin.defaults, options);
 
-        // マッチした要素それぞれにオプションを設定する
         return this.each(function () {
             var opts, settings = {}, $this = $(this);
 
@@ -23,12 +20,11 @@
             opts = $this.parseData("tooltip");
             settings = $.extend({}, options, settings, opts);
 
-            // プラグインのメイン処理
             myPrivateFunc($this, settings);
         });
     };
 
-    // ツールチップ表示
+    // show tooltip
     function myPrivateFunc($elm, settings) {
         $elm.on({
             mouseenter: function () {
@@ -55,7 +51,6 @@
         });
     }
 
-    // オプションのデフォルト値
     $.fn.MyPlugin.defaults = {
         color: "black",
         background: "white",
@@ -65,7 +60,6 @@
 })(jQuery, window, document);
 
 $(function () {
-    // オプションを指定して起動する
     var obj = $(".tooltip").MyPlugin({
         background: "yellow"
     });
