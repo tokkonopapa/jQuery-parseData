@@ -18,7 +18,7 @@ will get the options object:
 ```javascript
 {
     propertyFoo: "foo",
-    propertyBar: "bar
+    propertyBar: "bar"
 }
 ```
 
