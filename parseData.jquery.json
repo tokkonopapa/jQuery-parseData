@@ -31,6 +31,7 @@
     "bugs": "https://github.com/tokkonopapa/jQuery-parseData/issues",
     "homepage": "https://github.com/tokkonopapa/jQuery-parseData",
     "docs": "https://github.com/tokkonopapa/jQuery-parseData/blob/master/README.md",
+    "demo": "http://jsfiddle.net/gh/get/jquery/1.10.1/tokkonopapa/jQuery-parseData/tree/master/Demo/"
     "dependencies": {
         "jquery": ">=1.6"
     }
