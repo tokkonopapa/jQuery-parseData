@@ -1,4 +1,4 @@
-
+// simple tooltip plugin
 ;(function ($, window, document, undefined) {
 
     $.fn.MyPlugin = function (options) {
@@ -24,7 +24,6 @@
         });
     };
 
-    // show tooltip
     function myPrivateFunc($elm, settings) {
         $elm.on({
             mouseenter: function () {
