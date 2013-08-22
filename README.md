@@ -55,5 +55,10 @@ if ( rvalidchars.test( data.replace( rvalidescape, "@" )
 
 It means this plugin has a safety equivalent to the Douglas Crockford's json2.
 
+### References:
+
+- [RFC4627]
+
 [JSON]: https://github.com/douglascrockford/JSON-js/blob/master/json2.js
 [DEMO]: http://jsfiddle.net/gh/get/jquery/1.10.1/tokkonopapa/jQuery-parseData/tree/master/Demo/
+[RFC4627]: http://www.rfc-editor.org/rfc/rfc4627.txt
