@@ -1,5 +1,5 @@
 /*
-* $.parseData v0.1
+* $.parseData v0.1.1
 * Copyright 2013, tokkonopapa
 * https://github.com/tokkonopapa/jQuery-parseData/
 *
@@ -12,7 +12,7 @@
 	var _jsonize_brace = /^[{\[]/,         // check `{`、`[` at the beginning
 	    _jsonize_token = /[^,:{}\[\]]+/g,  // retrieve token based on the delimiter
 	    _jsonize_quote = /^['"](.*)['"]$/, // remove quotes at the top end
-	    _jsonize_escap = /"/g;             // escape double quote
+	    _jsonize_escap = /(["])/g;         // characters to be escaped
 
 	// Convert JSON like literals to valid JSON
 	// Numeric or String literal will be converted to strings.
@@ -42,7 +42,7 @@
 			else {
 				return '"'
 					+ a.replace(_jsonize_quote, '$1')
-					   .replace(_jsonize_escap, '\\"')
+					   .replace(_jsonize_escap, '\\$1')
 					+ '"';
 			}
 		});
